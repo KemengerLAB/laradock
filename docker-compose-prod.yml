@@ -8,6 +8,7 @@ services:
       image: tianon/true
       volumes:
         - ${APPLICATION}:/var/www
+      restart: 'unless-stopped'
 
 ### Workspace Utilities Container ###########################
 
@@ -50,6 +51,7 @@ services:
       networks:
         - frontend
         - backend
+      restart: 'unless-stopped'
 
 ### PHP-FPM Container #######################################
 
@@ -90,6 +92,7 @@ services:
         - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}
       networks:
         - backend
+      restart: 'unless-stopped'
 
 ### Nginx Server Container ##################################
 
@@ -111,6 +114,7 @@ services:
       networks:
         - frontend
         - backend
+      restart: 'unless-stopped'
 
 ### MySQL Container #########################################
 
@@ -130,8 +134,7 @@ services:
         - "${MYSQL_PORT}:3306"
       networks:
         - backend
-
-
+      restart: 'unless-stopped'
 
 ### Networks Setup ############################################
 
